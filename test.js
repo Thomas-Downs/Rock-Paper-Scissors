@@ -43,3 +43,88 @@ function resetGame() {
     }
 }
 
+
+// plays a single round of the game
+function playRound() {
+
+    gameNumber++
+    let computerChoice = cpuPlay();
+
+    playerSelection = playerSelection.toLowerCase();
+
+    // rock comparison
+    if (computerChoice === "rock") {
+        if (computerChoice === "rock" && playerSelection === "rock") {
+            comparison -= 0;
+            getScore();
+            document.getElementById("text").innerHTML = "You both chose rock.  Your score is " + comparison + "." + endingPhrase;
+            resetGame();
+            return;
+        } else if (computerChoice === "rock" && playerSelection === "paper") {
+            comparison += 1;
+            getScore();
+            document.getElementById("text").innerHTML = "The CPU's rock is eaten by your paper! Your score is " + comparison + "." + endingPhrase;
+            resetGame();
+            return;
+        } else {
+            comparison -= 1;
+            getScore();
+            document.getElementById("text").innerHTML = "The CPU's rock smashes your scissors! Your score is " + comparison + "." + endingPhrase;
+            return;
+        }
+    } 
+    // paper comparison
+    else if (computerChoice === "paper") {
+        if (computerChoice === "paper" && playerSelection === "paper") {
+            comparison -= 0;
+            getScore();
+            document.getElementById("text").innerHTML = "You both chose paper.  Your score is " + comparison + "." + endingPhrase;
+            resetGame();
+            return;
+        } else if (computerChoice === "paper" && playerSelection === "rock") {
+            comparison += 1;
+            getScore();
+            document.getElementById("text").innerHTML = "The CPU's paper eats your rock! Your score is " + comparison + "." + endingPhrase;
+            resetGame();
+            return;
+        } else {
+            comparison -= 1;
+            getScore();
+            document.getElementById("text").innerHTML = "Your scissors cut the CPU's rock into a little snowflake! Your score is " + comparison + "." + endingPhrase;
+            return;
+        }
+    } 
+
+    // scissors comparison
+    else if (computerChoice === "scissors") {
+        if (computerChoice === "scissors" && playerSelection === "scissors") {
+            comparison -= 0;
+            getScore();
+            document.getElementById("text").innerHTML = "You both chose scissors.  Your score is " + comparison + "." + endingPhrase;
+            resetGame();
+            return;
+    }   else if (computerChoice === "scissors" && playerSelection === "paper") {
+            comparison += 1;
+            getScore();
+            document.getElementById("text").innerHTML = "The CPU's scissors cut your paper into a little snowflake! Your score is " + comparison + "." + endingPhrase;
+            resetGame();
+            return;
+    } else {
+            comparison -= 1;
+            getScore();
+            document.getElementById("text").innerHTML = "Your rock smashes the CPU's scissors! Your score is " + comparison + "." + endingPhrase;
+            return;
+    }
+    } else {
+        document.getElementById("text").innerHTML = "Something went wrong.  Please reload the page.";
+    }
+}
+
+buttons.forEach((input) => {
+    input.addEventListener("click", (e) => {
+        playerSelection = input.value;
+        input.focus();
+        playRound()
+    });
+});
+
