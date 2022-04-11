@@ -1,5 +1,6 @@
 // global variables
-let comparison = 0;
+let playerScore = 0;
+let computerScore = 0;
 let playerSelection = "";
 const buttons = document.querySelectorAll("input");
 let gameNumber = 0;
@@ -20,9 +21,9 @@ function cpuPlay() {
 // check to see if game is final
 function getScore() {
     if (gameNumber == 5) {
-        if (comparison == 0) {
+        if (playerScore == computerScore) {
             endingPhrase = "<br />" + "Tie!";
-        } else if (comparison > 0) {
+        } else if (playerScore > computerScore) {
             endingPhrase = "<br />" + "You won the game!";
         } else {
             endingPhrase = "<br />" + "You lose the game!";
@@ -36,7 +37,8 @@ function getScore() {
 function resetGame() {
     if (gameNumber == 5) {
         gameNumber = 0;
-        comparison = 0;
+        computerScore = 0;
+        playerScore = 0;
         endingPhrase = "";
     } else {
         return;
@@ -55,42 +57,44 @@ function playRound() {
     // rock comparison
     if (computerChoice === "rock") {
         if (computerChoice === "rock" && playerSelection === "rock") {
-            comparison -= 0;
+            computerScore == computerScore;
+            playerScore == playerScore;
             getScore();
-            document.getElementById("text").innerHTML = "You both chose rock.  Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "You both chose rock.  Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             resetGame();
             return;
         } else if (computerChoice === "rock" && playerSelection === "paper") {
-            comparison += 1;
+            playerScore += 1;
             getScore();
-            document.getElementById("text").innerHTML = "The CPU's rock is eaten by your paper! Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "The CPU's rock is eaten by your paper! Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             resetGame();
             return;
         } else {
-            comparison -= 1;
+            computerScore += 1;
             getScore();
-            document.getElementById("text").innerHTML = "The CPU's rock smashes your scissors! Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "The CPU's rock smashes your scissors! Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             return;
         }
     } 
     // paper comparison
     else if (computerChoice === "paper") {
         if (computerChoice === "paper" && playerSelection === "paper") {
-            comparison -= 0;
+            computerScore == computerScore;
+            playerScore == playerScore;
             getScore();
-            document.getElementById("text").innerHTML = "You both chose paper.  Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "You both chose paper.  Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             resetGame();
             return;
         } else if (computerChoice === "paper" && playerSelection === "rock") {
-            comparison += 1;
+            computerScore += 1;
             getScore();
-            document.getElementById("text").innerHTML = "The CPU's paper eats your rock! Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "The CPU's paper eats your rock! Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             resetGame();
             return;
         } else {
-            comparison -= 1;
+            playerScore += 1;
             getScore();
-            document.getElementById("text").innerHTML = "Your scissors cut the CPU's rock into a little snowflake! Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "Your scissors cut the CPU's paper into a little snowflake! Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             return;
         }
     } 
@@ -98,21 +102,22 @@ function playRound() {
     // scissors comparison
     else if (computerChoice === "scissors") {
         if (computerChoice === "scissors" && playerSelection === "scissors") {
-            comparison -= 0;
+            computerScore = computerScore;
+            playerScore = playerScore;
             getScore();
-            document.getElementById("text").innerHTML = "You both chose scissors.  Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "You both chose scissors.  Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             resetGame();
             return;
     }   else if (computerChoice === "scissors" && playerSelection === "paper") {
-            comparison += 1;
+            computerScore += 1;
             getScore();
-            document.getElementById("text").innerHTML = "The CPU's scissors cut your paper into a little snowflake! Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "The CPU's scissors cut your paper into a little snowflake! Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             resetGame();
             return;
     } else {
-            comparison -= 1;
+            playerScore += 1;
             getScore();
-            document.getElementById("text").innerHTML = "Your rock smashes the CPU's scissors! Your score is " + comparison + "." + endingPhrase;
+            document.getElementById("text").innerHTML = "Your rock smashes the CPU's scissors! Your score is " + playerScore + "." + "The CPU's score is " + computerScore + "." + endingPhrase;
             return;
     }
     } else {
@@ -128,3 +133,10 @@ buttons.forEach((input) => {
     });
 });
 
+
+
+/* TO-DO: 
+    * Change comparison to computerScore and playerScore to track each score separately.
+    * Add a display for current scored on the page to easily track.
+    * Double check to make sure that game is playing with the correct functions.  It seems as though code is running within one function.
+*/
