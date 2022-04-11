@@ -19,6 +19,7 @@ The classic Rock, Paper, Scissors game brought to you in vanilla HTML, CSS, and 
 
 ## Ackowledgements
 
-* Thanks to the Odin Project for providing free learning materials.  Thank you to Nathan Thomas for recommending the Odin Project as a kickstarter for development learning.  
+* Thanks to the Odin Project for providing free learning materials.  
+* Thank you to Nathan Thomas for recommending the best route for learning and guidance on my first project.
 * Thanks Google, for without you none of us could do what we do.
 
