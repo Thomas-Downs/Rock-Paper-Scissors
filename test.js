@@ -20,7 +20,7 @@ function cpuPlay() {
 
 // check to see if game is final
 function getScore() {
-    if (gameNumber == 5) {
+    if (playerScore == 5 || computerScore == 5) {
         if (playerScore == computerScore) {
             endingPhrase = "<br />" + "Tie!";
         } else if (playerScore > computerScore) {
@@ -33,9 +33,9 @@ function getScore() {
     }
 }
 
-// resets game is score is 5
+// resets game if score is 5
 function resetGame() {
-    if (gameNumber == 5) {
+    if (playerScore == 5 || computerScore == 5) {
         gameNumber = 0;
         computerScore = 0;
         playerScore = 0;
@@ -49,7 +49,7 @@ function resetGame() {
 // plays a single round of the game
 function playRound() {
 
-    gameNumber++
+    // gameNumber++
     let computerChoice = cpuPlay();
 
     playerSelection = playerSelection.toLowerCase();
@@ -136,7 +136,5 @@ buttons.forEach((input) => {
 
 
 /* TO-DO: 
-    * Change comparison to computerScore and playerScore to track each score separately.
     * Add a display for current scored on the page to easily track.
-    * Double check to make sure that game is playing with the correct functions.  It seems as though code is running within one function.
 */
